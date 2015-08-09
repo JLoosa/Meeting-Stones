@@ -1,0 +1,9 @@
+main: me.jrl1004.java.meetingstones.MeetingStones
+name: MeetingStones
+version: 1.0.0
+
+commands:
+  meetingstones:
+    aliases: [ms]
+  mswarp:
+    aliases: [warp]
