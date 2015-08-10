@@ -1,0 +1,12 @@
+1.0.1:
+- Moved the BlockBreak and BlockPlaceEvent to a separate class and re-wrote them to better support saving and removal
+- Removed metadata code as it never got any use
+- Moved command handling to a seperate class
+- Recoded location matching for block removal to increase reliability
+- MeetingStones can now have spaces in their names
+- MeetingStones can no longer be "stacked" in the lore by spamming the create command
+- The clear command has been slightly reworked to properly remove the lore
+- Added color to messages and a perfix so they are not just a boring line of plain text
+
+1.0.0:
+- Initial Release. Most parts functional

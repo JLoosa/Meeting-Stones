@@ -46,4 +46,12 @@ public class Stone {
 	public String getSaveString() {
 		return name + ":" + getStorableVector();
 	}
+
+	public boolean isAtLocation(Location loc) {
+		if (!loc.getWorld().equals(location.getWorld())) return false;
+		if (loc.getBlockX() != location.getBlockX()) return false;
+		if (loc.getBlockY() != location.getBlockY()) return false;
+		if (loc.getBlockZ() != location.getBlockZ()) return false;
+		return true;
+	}
 }
