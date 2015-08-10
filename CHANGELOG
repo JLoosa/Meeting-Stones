@@ -7,6 +7,8 @@
 - MeetingStones can no longer be "stacked" in the lore by spamming the create command
 - The clear command has been slightly reworked to properly remove the lore
 - Added color to messages and a perfix so they are not just a boring line of plain text
+- Only players with permission may place/break MeetingStones (BUT PISTONS CAN STILL PUSH THE BLOCK!)
+- Fixed a bug preventing block removal after a player has teleported to it (also caused an offset bug)
 
 1.0.0:
 - Initial Release. Most parts functional

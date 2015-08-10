@@ -28,11 +28,11 @@ public class MeetingStones extends JavaPlugin implements Listener {
 		Map<World, List<String>> sd = new HashMap<World, List<String>>();
 		for (Stone s : stones)
 			if (sd.containsKey(s.getworld())) sd.get(s.getworld()).add(s.getSaveString());
-			else
-				sd.put(s.getworld(), new ArrayList<String>(Arrays.asList(s.getSaveString())));
+			else sd.put(s.getworld(), new ArrayList<String>(Arrays.asList(s.getSaveString())));
 		for (World w : sd.keySet())
 			getConfig().set(w.getName(), sd.get(w));
 		saveConfig();
+		getLogger().info("Saved " + stones.size() + " MeetingStones to file");
 		stones.clear();
 		stones = null;
 		super.onDisable();
@@ -55,9 +55,16 @@ public class MeetingStones extends JavaPlugin implements Listener {
 		for (String s : keys) {
 			World world = Bukkit.getWorld(s);
 			List<String> list = getConfig().getStringList(s);
-			for (String data : list)
-				stones.add(new Stone(world, data.split(":")[0], data.split(":")[1]));
+			for (String data : list) {
+				String[] serialized = data.split(":");
+				Stone stone = new Stone(world, serialized[0], serialized[1]);
+				getLogger().info("Stone #" + (stones.size() + 1) + " loading: " + stone.getName());
+				if (stone.verifyData() && stones.add(stone)) getLogger().fine("Stone loaded sucessfully");
+				else getLogger().warning("Stone failed to load");
+			}
 		}
+		if (stones.size() > 0)
+			getLogger().info("Sucessfully loaded in " + stones.size() + " MeetingStones!");
 		super.onEnable();
 	}
 
@@ -78,8 +85,11 @@ public class MeetingStones extends JavaPlugin implements Listener {
 		if (stones.isEmpty())
 			return null;
 		for (Stone s : stones)
+		{
+			System.out.println("---- " + s.getName() + " ----");
 			if (s.isAtLocation(location))
 				return s;
+		}
 		return null;
 	}
 

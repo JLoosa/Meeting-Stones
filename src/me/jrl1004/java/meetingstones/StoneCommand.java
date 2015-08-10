@@ -86,16 +86,16 @@ public class StoneCommand implements CommandExecutor {
 			messageColored(player, "Stone not found");
 			return;
 		}
-		player.teleport(stone.getLocation().add(0.5, 1, 0.5));
+		player.teleport(stone.getLocation().clone().add(0.5, 1, 0.5));
 		messageColored(player, "Teleported to MeetingStone \"" + stone.getName() + "\"");
 	}
-	
+
 	private String prefix = ChatColor.GREEN + "MeetingStones > " + ChatColor.AQUA;
-	
+
 	private void messageColored(CommandSender sender, String... messages) {
-		if(sender == null) return;
-		if(messages.length == 0) return;
-		for(String msg : messages)
+		if (sender == null) return;
+		if (messages.length == 0) return;
+		for (String msg : messages)
 			sender.sendMessage(prefix + ChatColor.translateAlternateColorCodes('&', msg));
 	}
 }

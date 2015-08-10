@@ -54,4 +54,11 @@ public class Stone {
 		if (loc.getBlockZ() != location.getBlockZ()) return false;
 		return true;
 	}
+
+	public boolean verifyData() {
+		if (location == null) return false;
+		if (location.getWorld() == null) return false;
+		if (name == null || name.length() == 0) return false;
+		return true;
+	}
 }
