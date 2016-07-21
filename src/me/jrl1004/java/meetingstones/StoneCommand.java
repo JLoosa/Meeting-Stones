@@ -42,7 +42,7 @@ public class StoneCommand implements CommandExecutor {
 			messageColored(player, "/MeetingStones <Create | Clear>");
 			return;
 		}
-		ItemStack stack = player.getItemInHand();
+		ItemStack stack = player.getInventory().getItemInMainHand();
 		if (stack == null || stack.getType() == Material.AIR || !stack.getType().isBlock()) {
 			messageColored(player, "Please hold the block you would like to use");
 			return;
@@ -63,7 +63,7 @@ public class StoneCommand implements CommandExecutor {
 				lore.remove("MeetingStone");
 			m.setLore(lore);
 			stack.setItemMeta(m);
-			player.setItemInHand(stack);
+			player.getInventory().setItemInMainHand(stack);
 			messageColored(player, "Held block reset");
 		}
 	}
@@ -90,7 +90,7 @@ public class StoneCommand implements CommandExecutor {
 		messageColored(player, "Teleported to MeetingStone \"" + stone.getName() + "\"");
 	}
 
-	private String prefix = ChatColor.GREEN + "MeetingStones > " + ChatColor.AQUA;
+	private String	prefix	= ChatColor.GREEN + "MeetingStones > " + ChatColor.AQUA;
 
 	private void messageColored(CommandSender sender, String... messages) {
 		if (sender == null) return;

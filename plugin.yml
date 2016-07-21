@@ -1,6 +1,6 @@
 main: me.jrl1004.java.meetingstones.MeetingStones
 name: MeetingStones
-version: 1.0.0
+version: 1.0.2
 
 commands:
   meetingstones:
